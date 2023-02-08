@@ -1,2 +1,3 @@
 # hw1_Gurdev_Kien_Alex
-Duy Kien Nguyen
+Duy Kien Nguyen,
+Gurdev singh
