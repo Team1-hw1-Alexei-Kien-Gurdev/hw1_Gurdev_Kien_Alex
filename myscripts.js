@@ -15,6 +15,8 @@ myForm.addEventListener("submit", function (e)
      csvToArray(text,arrOfNumbers,arrOfStates);
       //Algo:
       Hamilton_Algorithm(arrOfNumbers,MinimumRep);
+      //Print
+     printOutput(arrOfNumbers,arrOfStates,MinimumRep);
   };
   reader.readAsText(input);
   
@@ -63,8 +65,7 @@ function csvToArray(str, arrOfNumbers,arrOfStates,delimiter = ",") {
 function Hamilton_Algorithm(arrOfNumbers,MinimumRep)
 {
   var representative=+document.getElementById("represtNo").value ;
-  var states=arrOfNumbers.length;
-
+  
    //First step: Calculate Total population:
    let totalPop=0;
    for(let i=0; i<arrOfNumbers.length; i++){
@@ -101,4 +102,26 @@ function Hamilton_Algorithm(arrOfNumbers,MinimumRep)
     let index=remain.indexOf(value);
     MinimumRep[index]+=1;
    } 
+}
+//Output:
+//This function will print all values on front part
+function printOutput(arrOfNumbers,arrOfStates,MinimumRep)
+{
+  document.getElementById("output").innerHTML=" ";
+  document.getElementById("output").innerHTML="States &nbsp;  Population      Minimum Representative(Hamilton)<br>";
+  const copyArrOfStates=[];
+  for(let i=0; i<arrOfStates.length; i++)
+  {
+    copyArrOfStates[i]=arrOfStates[i];
+  }
+  //Now sort
+  copyArrOfStates.sort();
+  
+  for(let i=0; i<arrOfStates.length; i++)
+  {
+    let value=copyArrOfStates[i];
+    let index=arrOfStates.indexOf(value);
+    document.getElementById("output").innerHTML+=arrOfStates[index]+"  &nbsp;___  "+arrOfNumbers[index]+"&nbsp; ___"+MinimumRep[index]+" <br>";
+  }
+
 }
