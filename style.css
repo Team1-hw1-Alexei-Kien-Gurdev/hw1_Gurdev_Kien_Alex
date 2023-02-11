@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box;
+}
+
+body { 
+    background-color: rgb(179, 222, 208);
+    font-family: Verdana, Arial, sans-serif; 
+    border: rgb(97, 160, 139) 7px solid;
+    border-radius: 3px; 
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 5%;
+    margin-bottom: 5%; 
+}
+
+body h2, label{
+    text-align: center;
+    padding: 2%;
+    margin: 0%;
+}
+
+body > input{
+    float: right;
+    width: 30%;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 1%;
+    margin-right: 2%;
+}
+#myForm, #output{
+    padding: 2%;
+}
+
+
