@@ -13,9 +13,11 @@ myForm.addEventListener("submit", function (e)
      const arrOfStates = [];//(array will holds names of states)
      const MinimumRep=[];//(Arrays holds the minimum number of reprsetative per state)
      csvToArray(text,arrOfNumbers,arrOfStates);
+      //Algo:
+      Hamilton_Algorithm(arrOfNumbers,MinimumRep);
   };
   reader.readAsText(input);
-  input.writeOnFile(data);
+  
 });
 
 //This function :
@@ -41,7 +43,6 @@ function csvToArray(str, arrOfNumbers,arrOfStates,delimiter = ",") {
         i++;
       }
       arrOfNumbers.push(str2);
-      console.log(arrOfNumbers[j]);
       j++;
     }
     else {
@@ -54,9 +55,50 @@ function csvToArray(str, arrOfNumbers,arrOfStates,delimiter = ",") {
         i++; 
       }
       arrOfStates.push(stateString);
-      console.log(arrOfStates[k]);
       k++;
       i--;
     }
   }
+}
+function Hamilton_Algorithm(arrOfNumbers,MinimumRep)
+{
+  var representative=+document.getElementById("represtNo").value ;
+  var states=arrOfNumbers.length;
+
+   //First step: Calculate Total population:
+   let totalPop=0;
+   for(let i=0; i<arrOfNumbers.length; i++){
+        totalPop=Number(arrOfNumbers[i])+totalPop;
+   }
+   //Second Step: calculate the average population per representative
+  let avgPop=(totalPop/representative);
+
+  //Third step:
+  //This array holds the minimum respresentative
+     const divide=[];
+     const remain=[];
+     const copyRemain=[];
+     const floor=[];
+     let countRep=0;
+     let leftRep=0;
+    for(let i=0; i<arrOfNumbers.length; i++)
+    {
+      divide[i]=((+arrOfNumbers[i])/avgPop).toFixed(2);//This array stores values after dividing upto two decimal
+     floor[i]=(Math.floor((+arrOfNumbers[i])/avgPop));//This array stores floor values;
+     remain[i]=(divide[i]-floor[i]).toFixed(2);
+     copyRemain[i]=(divide[i]-floor[i]).toFixed(2);
+      //count total representative
+     countRep=countRep+floor[i];
+     MinimumRep[i]=Math.floor((+arrOfNumbers[i])/avgPop);
+    }
+    leftRep=representative-countRep;
+   //Sort copyRemain and reverse(to get higest element at 0 index):
+   copyRemain.sort();
+   copyRemain.reverse();
+   for(let i=0; i<leftRep; i++)
+   {
+    let value=copyRemain[i];//largest value;
+    let index=remain.indexOf(value);
+    MinimumRep[index]+=1;
+   } 
 }
