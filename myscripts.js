@@ -224,14 +224,17 @@ function printOutput(arrOfNumbers, arrOfStates, MinimumRep) {
   }
   //Now sort
   copyArrOfStates.sort();
+  var data=" ";
+  data+="States                  Population                     Reprsentatative\n";
   for (let i = 0; i < arrOfStates.length; i++) {
     let value = copyArrOfStates[i];
     let index = arrOfStates.indexOf(value);
     document.getElementById("output").innerHTML += arrOfStates[index] + "  &nbsp;___  " + arrOfNumbers[index] + "&nbsp; ___" + MinimumRep[index] + " <br>";
+    data+=arrOfStates[index] + "                 " + arrOfNumbers[index] + "                   " + MinimumRep[index] + " \n";
   }
   document.getElementById("error").innerHTML=" ";
   
-  var csvFile = document.getElementById("output").innerHTML;
+  var csvFile = data;
   
   let filename = "exportCSV"; 
 
