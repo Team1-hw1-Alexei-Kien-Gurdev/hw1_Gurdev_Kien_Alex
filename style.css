@@ -27,8 +27,13 @@ body > input{
     padding: 1%;
     margin-right: 2%;
 }
+#error{
+    color:red;
+}
 #myForm, #output{
     padding: 2%;
+    
 }
+
 
 
