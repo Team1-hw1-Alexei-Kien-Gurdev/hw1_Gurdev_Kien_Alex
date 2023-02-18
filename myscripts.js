@@ -217,7 +217,7 @@ function Huntington_Hill_Algo(arrOfNumbers, arrOfStates, MinimumRep) {
 //This function will print all values on front part
 function printOutput(arrOfNumbers, arrOfStates, MinimumRep) {
   document.getElementById("output").innerHTML = " ";
-  document.getElementById("output").innerHTML = "States &nbsp;  Population      Minimum Representative<br>";
+  document.getElementById("output").innerHTML = "States &nbsp;  Population      Minimum Representative(Hamilton)<br>";
   const copyArrOfStates = [];
   for (let i = 0; i < arrOfStates.length; i++) {
     copyArrOfStates[i] = arrOfStates[i];
